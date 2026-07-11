@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>动态跳转导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        body {
+            padding: 30px;
+        }
+        .warn {
+            background: #ffdddd;
+            color: red;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            list-style: none;
+        }
+        li a {
+            display: block;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-decoration: none;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <h2>文件跳转入口</h2>
+    <div class="warn">如果当前环境不支持html文件，跳转后会提示：当前不支持该文件类型，请尝试其他文件</div>
+    <ul id="fileBox"></ul>
+
+    <script>
+        // 所有目标文件名数组
+        const fileNames = [
+            "001简单的HTML文件.html",
+            "002输出文本.html",
+            "003输出文本.html",
+            "004输出孔子的名言.html",
+            "005HTML5的标题.html",
+            "006文档标题.html",
+            "007输出古诗.html",
+            "008《span》标签的应用.html",
+            "009编程词典简介.html",
+            "010编程词典简介.html",
+            "011明日科技教学视频.html",
+            "012葡萄.html"
+        ];
+        const box = document.getElementById('fileBox');
+        // 循环生成跳转链接
+        fileNames.forEach(name => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = name;
+            a.innerText = name;
+            li.appendChild(a);
+            box.appendChild(li);
+        })
+    </script>
+</body>
+</html>
