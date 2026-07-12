@@ -1,45 +1,82 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>动态跳转导航</title>
+    <!-- 响应式视口标签 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML文件跳转导航</title>
     <style>
         * {
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
         }
         body {
-            padding: 30px;
+            padding: 20px 15px;
+            background-color: #f5f7fa;
         }
-        .warn {
-            background: #ffdddd;
-            color: red;
-            padding: 10px;
-            margin: 20px 0;
+        h2 {
+            color: #222;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 22px;
         }
         ul {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             list-style: none;
+            max-width: 1100px;
+            margin: 0 auto;
         }
         li a {
             display: block;
-            padding: 10px;
-            border: 1px solid #ccc;
+            padding: 12px;
+            background: #fff;
+            border: 1px solid #d0d7e3;
+            border-radius: 6px;
             text-decoration: none;
-            color: #0066cc;
+            color: #2364b3;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        li a:hover {
+            background: #e6f0fc;
+            border-color: #2364b3;
+        }
+
+        /* 响应式媒体查询 */
+        /* 平板：2列 */
+        @media (max-width: 768px) {
+            ul {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            h2 {
+                font-size: 20px;
+            }
+        }
+        /* 手机：1列 */
+        @media (max-width: 480px) {
+            ul {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 15px 10px;
+            }
+            li a {
+                padding: 14px;
+                font-size: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <h2>文件跳转入口</h2>
-    <div class="warn">如果当前环境不支持html文件，跳转后会提示：当前不支持该文件类型，请尝试其他文件</div>
+    <h2>HTML案例文件跳转入口</h2>
     <ul id="fileBox"></ul>
 
     <script>
-        // 所有目标文件名数组
+        // 全部15个HTML文件
         const fileNames = [
             "001简单的HTML文件.html",
             "002输出文本.html",
@@ -52,10 +89,12 @@
             "009编程词典简介.html",
             "010编程词典简介.html",
             "011明日科技教学视频.html",
-            "012葡萄.html"
+            "012葡萄.html",
+            "013水果.html",
+            "014编程词典简介.html",
+            "015友情链接.html"
         ];
         const box = document.getElementById('fileBox');
-        // 循环生成跳转链接
         fileNames.forEach(name => {
             const li = document.createElement('li');
             const a = document.createElement('a');
